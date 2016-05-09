@@ -63,7 +63,7 @@ Puppet::Type.newtype(:network_route) do
     end
   end
 
-  newproperty(:interface) do
+  newparam(:interface) do
     isrequired
     isnamevar
     desc 'The interface to use for the route'
