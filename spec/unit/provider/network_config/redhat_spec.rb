@@ -104,7 +104,6 @@ describe Puppet::Type.type(:network_config).provider(:redhat) do
 
       before do
         described_class.stubs(:target_files).returns Dir["#{virbonding_path}/*"]
-        allow(MyClass).to receive(:new).and_return(instance)
         allow(instance).not_to receive(:select_file)
       end
 
