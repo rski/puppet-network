@@ -100,10 +100,12 @@ describe Puppet::Type.type(:network_config).provider(:redhat) do
 
     describe 'complex configuration' do
       let(:virbonding_path) { File.join(PROJECT_ROOT, 'spec', 'fixtures', 'provider', 'network_config', 'redhat_spec', 'virbonding') }
+      let(:instance) { instance_double described_class }
 
       before do
         described_class.stubs(:target_files).returns Dir["#{virbonding_path}/*"]
-        described_class.any_instance.expects(:select_file).never
+        allow(MyClass).to receive(:new).and_return(instance)
+        allow(instance).not_to receive(:select_file)
       end
 
       let(:interfaces) { described_class.instances }
